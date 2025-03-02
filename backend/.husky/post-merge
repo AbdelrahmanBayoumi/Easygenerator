@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Your script to run after merge (pull)
+echo "Post-merge (pull) hook triggered"
+
+node "$(dirname -- "$0")/../.vscode/install-extensions.js"
