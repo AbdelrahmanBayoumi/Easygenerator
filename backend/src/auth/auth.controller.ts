@@ -1,4 +1,4 @@
-import { Body, Controller, HttpCode, HttpStatus, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthenticatedRequest } from '../common/interfaces/request.interface';
 import { AuthService } from './auth.service';
@@ -54,7 +54,7 @@ export class AuthController {
 		return this.userService.register(registerDto);
 	}
 
-	@ApiOperation({ summary: 'Verify JWT token' })
+	@ApiOperation({ summary: 'Get current user object' })
 	@ApiBearerAuth()
 	@ApiResponse({
 		status: 200,
@@ -64,8 +64,7 @@ export class AuthController {
 		status: 401,
 		description: 'Unauthorized',
 	})
-	@HttpCode(HttpStatus.OK)
-	@Post('verify')
+	@Get('me')
 	@UseGuards(JwtAuthGuard)
 	async verify(@Req() req: AuthenticatedRequest) {
 		return req.user;

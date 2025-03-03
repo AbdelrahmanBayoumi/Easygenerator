@@ -10,7 +10,7 @@ import { ThrottlerBehindProxyGuard } from './common/guards/throttler-behind-prox
 import { TimeoutInterceptor } from './common/interceptors/timeout.interceptor';
 import { LoggingMiddleware } from './common/middleware/logging.middleware';
 import { HealthModule } from './health/health.module';
-import { AuthModule } from './user/auth.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
 	imports: [

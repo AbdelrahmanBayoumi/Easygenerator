@@ -20,7 +20,7 @@ export class AuthService {
 			throw new UnauthorizedException('Invalid email or password');
 		}
 		const payload = { email: user.email, id: user._id, name: user.name };
-		return { token: this.jwtService.sign(payload) };
+		return { token: this.jwtService.sign(payload), user: payload };
 	}
 
 	async register(registerDto: RegisterDto) {
